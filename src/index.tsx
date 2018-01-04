@@ -1,11 +1,11 @@
-import * as React from "react";
-import { ApolloProvider } from "react-apollo";
-import { render } from "react-dom";
-import { client } from "./utils/makeClinet";
-import registerServiceWorker from "./registerServiceWorker";
+import * as React from 'react';
+import { ApolloProvider } from 'react-apollo';
+import { render } from 'react-dom';
+import { client } from './utils/makeClinet';
+import registerServiceWorker from './registerServiceWorker';
 
-import App from "./App";
-import "./index.css";
+import App from './App';
+import './index.css';
 
 const WrappedApp = (
   <ApolloProvider client={client}>
@@ -13,5 +13,5 @@ const WrappedApp = (
   </ApolloProvider>
 );
 
-render(WrappedApp, document.getElementById("root"));
+render(WrappedApp, document.getElementById('root'));
 registerServiceWorker();

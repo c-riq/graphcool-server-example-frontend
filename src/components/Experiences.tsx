@@ -1,20 +1,13 @@
 import * as React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import Home from './Home';
+import Experience from './Experience';
 import { Intent, Spinner } from '@blueprintjs/core';
 import styled from 'styled-components';
+import Filterbar from './Filterbar';
 
 const Wrapper = styled.div`
-  margin-left: 200px;
-  margin-top: 50px;
-`;
-
-const Title = styled.h1`
-  font-size: 50px;
-  font-weight: 500;
-  text-align: left;
-  color: #fd5c63;
+  margin-left: 50px;
 `;
 
 interface Props {
@@ -31,12 +24,12 @@ class Homes extends React.Component<Props> {
       );
     return (
       <Wrapper>
-        <Title>CoolBnB</Title>
-        <h1>Homes</h1>
+        <Filterbar />
+        <h1>Experiences</h1>
         <div className="card-containter">
-          {this.props.data.topHomes.map((home: any) => (
-            <div key={home.id}>
-              <Home data={home} />
+          {this.props.data.topExperiences.map((experience: any) => (
+            <div key={experience.id}>
+              <Experience data={experience} />
             </div>
           ))}
         </div>
@@ -46,13 +39,9 @@ class Homes extends React.Component<Props> {
 }
 
 const HomesQuery = gql`
-  query getTopHomes {
-    topHomes {
+  query getTopExperiences {
+    topExperiences {
       id
-      name
-      pictures {
-        url
-      }
     }
   }
 `;

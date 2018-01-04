@@ -9,9 +9,9 @@ export default (props: props) => (
     className="pt-card pt-elevation-1 pt-interactive"
     style={{ width: '200px', padding: '0px' }}
   >
-    <img src={props.data.pictures[0].url} style={{ width: '200px' }} />
+    <div style={{ width: '200px' }} />
     <h5>
-      <p>{props.data.name}</p>
+      <p>{props.data.id}</p>
     </h5>
   </div>
 );
