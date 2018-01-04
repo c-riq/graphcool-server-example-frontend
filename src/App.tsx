@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./App.css";
 import Homes from "./components/Homes";
+import Navbar from "./components/Navbar";
 import styled from 'styled-components';
 
 const HomeTheme = styled.section`
@@ -11,7 +12,8 @@ const HomeTheme = styled.section`
 class App extends React.Component {
   render() {
     return (
-<HomeTheme>
+	<HomeTheme>
+	<Navbar />
       <div className="App">
         <Homes />
       </div>
