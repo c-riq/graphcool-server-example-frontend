@@ -20,6 +20,7 @@ const HOMES_QUERY = gql`
 
 type HomeData = {
   name: string;
+  perNight: number;
 };
 
 type Response = {

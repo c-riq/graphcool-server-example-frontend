@@ -6,8 +6,12 @@ export default () => (
   <Navbar>
     <NavbarGroup>
       <NavbarHeading>
-        <AirbnbLogo />
+        <AirbnbLogo />  
       </NavbarHeading>
+      <div className="pt-input-group pt-large">
+        <span className="pt-icon pt-icon-search"></span>
+        <input className="pt-input" type="search" placeholder="Search input" dir="auto" />
+      </div>    
     </NavbarGroup>
     <NavbarGroup align="right">
       <Button className="pt-minimal">Become a host</Button>
