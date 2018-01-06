@@ -2,10 +2,11 @@ import * as React from 'react';
 import styled from 'styled-components';
 import HomesGrid from './HomesGrid';
 
-import { RangeSliderExample } from './RangeSliderExample';
+import Filterbar from './Filterbar';
+import { PriceFilter } from './PriceFilter';
 
 const Wrapper = styled.div`
-  margin-left: 200px;
+  margin-left: 20px;
   margin-top: 50px;
 `;
 
@@ -31,15 +32,15 @@ class Homes extends React.Component<any, State> {
 
   setPriceRange(priceRange: Array<number>) {
     this.setState({ priceRange: priceRange });
-    console.log(this.state.priceRange, typeof this.state.priceRange)
+    console.log(this.state.priceRange, typeof this.state.priceRange);
   }
 
   render() {
     return (
       <Wrapper>
         <Title>CoolBnB</Title>
-
-        <RangeSliderExample setPriceRange={this.setPriceRange} />
+        <Filterbar />
+        <PriceFilter setPriceRange={this.setPriceRange} />
 
         <HomesGrid priceRange={this.state.priceRange} />
       </Wrapper>

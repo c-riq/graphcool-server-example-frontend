@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import gql from 'graphql-tag';
 import { graphql, QueryProps } from 'react-apollo';
@@ -33,7 +32,6 @@ type InputProps = {
   priceRange: Array<number>;
 };
 
-
 const withData = graphql<Response, InputProps, WrappedProps>(HOMES_QUERY, {
   options: ({ priceRange }) => ({
     variables: { min: priceRange[0], max: priceRange[1] },
@@ -41,8 +39,8 @@ const withData = graphql<Response, InputProps, WrappedProps>(HOMES_QUERY, {
   props: ({ data }) => ({ ...data }),
 });
 
-export default withData((response) => {
-  console.log(response)
+export default withData(response => {
+  console.log(response);
   if (response.loading) return <Spinner intent={Intent.PRIMARY} />;
   if (response.error) return <h1>{JSON.stringify(response.error)}</h1>;
 
@@ -59,8 +57,3 @@ export default withData((response) => {
     </div>
   );
 });
-
-
-
-
-

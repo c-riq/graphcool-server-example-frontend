@@ -11,7 +11,7 @@ export interface IRangeSliderExampleState {
   vertical?: boolean;
 }
 
-export class RangeSliderExample extends React.Component<Props> {
+export class PriceFilter extends React.Component<Props> {
   public state: IRangeSliderExampleState = {
     range: [0, 200],
     vertical: false,
@@ -20,6 +20,7 @@ export class RangeSliderExample extends React.Component<Props> {
   render() {
     return (
       <div style={{ width: '400px' }}>
+        Price per night $
         <RangeSlider
           min={0}
           max={200}

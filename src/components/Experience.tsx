@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-interface props {
+interface Props {
   data: any;
 }
 
-export default (props: props) => (
+export default (props: Props) => (
   <div
     className="pt-card pt-elevation-1 pt-interactive"
     style={{ width: '200px', padding: '0px' }}
