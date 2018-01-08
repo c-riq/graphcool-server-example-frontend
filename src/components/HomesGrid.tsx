@@ -3,6 +3,29 @@ import gql from 'graphql-tag';
 import { graphql, QueryProps } from 'react-apollo';
 import { Intent, Spinner } from '@blueprintjs/core';
 import Home from './Home';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  margin-top: 20px;
+`;
+
+const CenterDiv = styled.div`
+  padding: 100px;
+  width: 100%;
+  text-align: center;
+`;
+
+const CardContainer = styled.div`
+  margin-left: 0px;
+  margin-right: 100px;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  align-content: flex-end;
+`;
 
 const HOMES_QUERY = gql`
   query homes($min: Int!, $max: Int!) {
@@ -40,19 +63,19 @@ const withData = graphql<Response, InputProps, WrappedProps>(HOMES_QUERY, {
 });
 
 export default withData(response => {
-  if (response.loading) return <Spinner intent={Intent.PRIMARY} />;
-  if (response.error) return <h1>{JSON.stringify(response.error)}</h1>;
+  if (response.loading) {return <CenterDiv> <Spinner intent={Intent.PRIMARY} /> </CenterDiv>; }
+  if (response.error) {return <h1>{JSON.stringify(response.error)}</h1>; }
 
   return (
-    <div>
-      <h1>Homes</h1>
-      <div className="card-containter">
+    <Wrapper>
+      <h1>&nbsp;Homes</h1>
+      <CardContainer>
         {response.homesInPriceRange.map((home: any) => (
           <div key={home.id}>
             <Home data={home} />
           </div>
         ))}
-      </div>
-    </div>
+      </CardContainer>
+    </Wrapper>
   );
 });

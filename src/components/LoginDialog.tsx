@@ -7,15 +7,12 @@ import gql from 'graphql-tag';
 interface SignupState {
   isOpen: boolean;
   email: string;
-  firstName: string;
-  lastName: string;
   password: string;
-  phone: string;
   error?: string;
 }
 interface SignupProps {
   mutate: any;
-  loginApp: any;
+  loginApp?: any;
 }
 
 class SignUpDialog extends React.Component<SignupProps, SignupState> {
@@ -24,10 +21,7 @@ class SignUpDialog extends React.Component<SignupProps, SignupState> {
     this.state = {
       isOpen: false,
       email: '',
-      firstName: '',
-      lastName: '',
-      password: '',
-      phone: ''
+      password: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -37,7 +31,7 @@ class SignUpDialog extends React.Component<SignupProps, SignupState> {
     return (
       <div>
         <Button className="pt-minimal" onClick={this.toggleDialog}>
-          Sign Up
+          Login
         </Button>
         <Dialog isOpen={this.state.isOpen} onClose={this.toggleDialog}>
           <div className="pt-dialog-body">
@@ -51,34 +45,10 @@ class SignUpDialog extends React.Component<SignupProps, SignupState> {
             <br />
             <input
               className="pt-input"
-              placeholder="First name"
-              type="text"
-              value={this.state.firstName}
-              onChange={event => this.handleChange(event, 'firstName')}
-            />
-            <br />
-            <input
-              className="pt-input"
-              placeholder="Last name"
-              type="text"
-              value={this.state.lastName}
-              onChange={event => this.handleChange(event, 'lastName')}
-            />
-            <br />
-            <input
-              className="pt-input"
               placeholder="Create a Password"
               type="text"
               value={this.state.password}
               onChange={event => this.handleChange(event, 'password')}
-            />
-            <br />
-            <input
-              className="pt-input"
-              placeholder="Phone Number"
-              type="text"
-              value={this.state.phone}
-              onChange={event => this.handleChange(event, 'phone')}
             />
             <br />
           </div>
@@ -88,7 +58,7 @@ class SignUpDialog extends React.Component<SignupProps, SignupState> {
               <Button
                 intent={Intent.PRIMARY}
                 onClick={this.onSubmit}
-                text="Sign up"
+                text="Login"
               />
             </div>
           </div>
@@ -98,25 +68,25 @@ class SignUpDialog extends React.Component<SignupProps, SignupState> {
   }
 
   public onSubmit() {
-    const { email, lastName, firstName, password, phone } = this.state;
+    const { email, password } = this.state;
     this.props
       .mutate({
-        variables: { email, lastName, firstName, password, phone }
+        variables: { email, password }
       })
       .then((data: any) => {
         this.setState({ password: '' });
-        const { email, firstName, lastName } = data.data.signup.user;
-        const token = data.data.signup.token;
+        const { email, firstName, lastName } = data.data.login.user;
+        const token = data.data.login.token;
         this.props.loginApp({ email, firstName, lastName, token });
         this.setState({ isOpen: false });
       })
       .catch((error: any) => {
         this.setState({
-          error: 'Signup error'
+          error: 'Login unsuccessfull! Please check email and password!'
         });
       });
   }
-
+  
   private toggleDialog = () => this.setState({ isOpen: !this.state.isOpen });
 
   private handleChange(event: any, key: string) {
@@ -124,28 +94,16 @@ class SignUpDialog extends React.Component<SignupProps, SignupState> {
     state[key] = event.target.value;
     this.setState(state);
   }
-
 }
 
-const SIGNUP_MUTATION = gql`
-  mutation signup(
-    $email: String!
-    $firstName: String!
-    $lastName: String!
-    $password: String!
-    $phone: String!
-  ) {
-    signup(
-      email: $email
-      firstName: $firstName
-      lastName: $lastName
-      password: $password
-      phone: $phone
-    ) {
+const LOGIN_MUTATION = gql`
+  mutation signin($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
       user {
         id
         firstName
         lastName
+        email
       }
       token
     }
@@ -153,9 +111,9 @@ const SIGNUP_MUTATION = gql`
 `;
 
 export interface InputProps {
-  loginApp: any;
+  loginApp?: any;
 }
 
-const withMutation = graphql<{}, InputProps>(SIGNUP_MUTATION);
+const withMutation = graphql<{}, InputProps>(LOGIN_MUTATION);
 
 export default withMutation(SignUpDialog);

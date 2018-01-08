@@ -8,12 +8,15 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  // add auth token
-  const token = null;
+  const user = String(localStorage.getItem('coolbnb_user'));
+  let token = null;
+  if (user) {
+    token = JSON.parse(user).token;
+  }
   return {
     headers: {
       ...headers,
-      Authorization: token ? `Bearer ${token}` : null,
+      Authorization: token ? `Bearer ${token}` : token,
     },
   };
 });
