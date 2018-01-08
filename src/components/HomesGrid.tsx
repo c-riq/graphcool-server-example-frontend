@@ -34,13 +34,12 @@ type InputProps = {
 
 const withData = graphql<Response, InputProps, WrappedProps>(HOMES_QUERY, {
   options: ({ priceRange }) => ({
-    variables: { min: priceRange[0], max: priceRange[1] },
+    variables: { min: priceRange[0], max: priceRange[1] }
   }),
-  props: ({ data }) => ({ ...data }),
+  props: ({ data }) => ({ ...data })
 });
 
 export default withData(response => {
-  console.log(response);
   if (response.loading) return <Spinner intent={Intent.PRIMARY} />;
   if (response.error) return <h1>{JSON.stringify(response.error)}</h1>;
 

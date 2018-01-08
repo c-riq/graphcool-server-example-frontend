@@ -17,15 +17,22 @@ const Title = styled.h1`
   color: #fd5c63;
 `;
 
+interface Props {
+  loginApp?: any;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+}
+
 interface State {
   priceRange: Array<number>;
 }
 
-class Homes extends React.Component<{}, State> {
+class Homes extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      priceRange: [0, 200],
+      priceRange: [0, 200]
     };
     this.setPriceRange = this.setPriceRange.bind(this);
   }

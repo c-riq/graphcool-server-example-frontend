@@ -14,7 +14,7 @@ export interface IRangeSliderExampleState {
 export class PriceFilter extends React.Component<Props> {
   public state: IRangeSliderExampleState = {
     range: [0, 200],
-    vertical: false,
+    vertical: false
   };
 
   render() {
