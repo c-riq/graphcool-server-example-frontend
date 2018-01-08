@@ -21,7 +21,7 @@ interface State {
   priceRange: Array<number>;
 }
 
-class Homes extends React.Component<any, State> {
+class Homes extends React.Component<{}, State> {
   constructor(props: any) {
     super(props);
     this.state = {

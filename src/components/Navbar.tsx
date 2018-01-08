@@ -1,8 +1,18 @@
 import * as React from 'react';
 import { Navbar, NavbarGroup, NavbarHeading, Button } from '@blueprintjs/core';
 import AirbnbLogo from './AirbnbLogo';
+import SignUpDialog from './SignUpDialog';
 
-export default () => (
+class NavigationBar extends React.Component<{}, {}> {
+
+  constructor(props: any) {
+    super(props);
+  }
+
+  handleOpen = () => this.setState({ isOpen: true });
+
+  render() {
+  return (
   <Navbar>
     <NavbarGroup>
       <NavbarHeading>
@@ -21,8 +31,13 @@ export default () => (
     <NavbarGroup align="right">
       <Button className="pt-minimal">Become a host</Button>
       <Button className="pt-minimal">Help</Button>
-      <Button className="pt-minimal">Sign Up</Button>
+      <SignUpDialog />
       <Button className="pt-minimal">Login</Button>
     </NavbarGroup>
   </Navbar>
-);
+)
+}
+
+}
+
+export default NavigationBar

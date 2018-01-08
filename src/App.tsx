@@ -10,6 +10,7 @@ const HomeTheme = styled.section`
   background: #ffffff;
 `;
 
+
 class App extends React.Component {
   render() {
     return (
