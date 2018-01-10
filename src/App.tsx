@@ -6,7 +6,8 @@ import Navbar from './components/Navbar';
 import styled from 'styled-components';
 
 const HomeTheme = styled.section`
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
 `;
 
 interface Props {

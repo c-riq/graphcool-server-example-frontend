@@ -34,20 +34,15 @@ class NavigationBar extends React.Component<Props, {}> {
           <NavbarHeading>
             <AirbnbLogo />
           </NavbarHeading>
-          <div className="pt-input-group pt-large">
-            <span className="pt-icon pt-icon-search" />
-            <input
-              className="pt-input"
-              type="search"
-              placeholder="Search input"
-              dir="auto"
-            />
-          </div>
           <Title>&nbsp;&nbsp;Coolbnb</Title>
         </NavbarGroup>
         <NavbarGroup align="right">
-          <Button className="pt-minimal">Become a host</Button>
-          <Button className="pt-minimal">Help</Button>
+          <Button className="pt-minimal" disabled={true}>
+            Become a host
+          </Button>
+          <Button className="pt-minimal" disabled={true}>
+            Help
+          </Button>
           {this.props.firstName ? (
             this.props.firstName
           ) : (

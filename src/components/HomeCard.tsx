@@ -12,7 +12,7 @@ export default (props: Props) => (
     <img src={props.data.pictures[0].url} style={{ maxWidth: '100%' }} />
     <h5>
       <p>{props.data.name}</p>
-      <p>${props.data.perNight}</p>
+      <p>From ${props.data.perNight} per night</p>
     </h5>
   </div>
 );

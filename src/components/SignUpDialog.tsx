@@ -27,7 +27,7 @@ class SignUpDialog extends React.Component<SignupProps, SignupState> {
       firstName: '',
       lastName: '',
       password: '',
-      phone: ''
+      phone: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -101,7 +101,7 @@ class SignUpDialog extends React.Component<SignupProps, SignupState> {
     const { email, lastName, firstName, password, phone } = this.state;
     this.props
       .mutate({
-        variables: { email, lastName, firstName, password, phone }
+        variables: { email, lastName, firstName, password, phone },
       })
       .then((data: any) => {
         this.setState({ password: '' });
@@ -112,7 +112,7 @@ class SignUpDialog extends React.Component<SignupProps, SignupState> {
       })
       .catch((error: any) => {
         this.setState({
-          error: 'Signup error'
+          error: 'Signup error',
         });
       });
   }
@@ -124,7 +124,6 @@ class SignUpDialog extends React.Component<SignupProps, SignupState> {
     state[key] = event.target.value;
     this.setState(state);
   }
-
 }
 
 const SIGNUP_MUTATION = gql`

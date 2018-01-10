@@ -14,7 +14,7 @@ export interface RangeSliderExampleState {
 export class PriceFilter extends React.Component<Props> {
   public state: RangeSliderExampleState = {
     range: [0, 200],
-    vertical: false
+    vertical: false,
   };
 
   render() {
@@ -36,5 +36,5 @@ export class PriceFilter extends React.Component<Props> {
 
   private handleValueChange = (range: NumberRange) => {
     this.setState({ range });
-  }
+  };
 }

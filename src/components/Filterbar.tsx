@@ -4,9 +4,10 @@ import {
   NavbarGroup,
   Button,
   Popover,
-  Position
+  Position,
 } from '@blueprintjs/core';
 import { PriceFilter } from './PriceFilter';
+import CitySearch from './CitySearch';
 
 interface Props {
   setPriceRange: any;
@@ -15,16 +16,25 @@ interface Props {
 export default (props: Props) => (
   <Navbar>
     <NavbarGroup align="left">
-      <Button className="pt-minimal">Dates</Button>
+      <CitySearch />
+      <Button className="pt-minimal" disabled={true}>
+        Dates
+      </Button>
       <Popover
         position={Position.BOTTOM_LEFT}
         popoverClassName="pt-popover-content-sizing"
         content={<PriceFilter setPriceRange={props.setPriceRange} />}
         target={<Button className="pt-minimal">Price</Button>}
       />
-      <Button className="pt-minimal">Guests</Button>
-      <Button className="pt-minimal">Types</Button>
-      <Button className="pt-minimal">Categories</Button>
+      <Button className="pt-minimal" disabled={true}>
+        Guests
+      </Button>
+      <Button className="pt-minimal" disabled={true}>
+        Types
+      </Button>
+      <Button className="pt-minimal" disabled={true}>
+        Categories
+      </Button>
     </NavbarGroup>
   </Navbar>
 );

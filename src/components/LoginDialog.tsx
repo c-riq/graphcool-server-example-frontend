@@ -21,7 +21,7 @@ class SignUpDialog extends React.Component<SignupProps, SignupState> {
     this.state = {
       isOpen: false,
       email: '',
-      password: ''
+      password: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -71,7 +71,7 @@ class SignUpDialog extends React.Component<SignupProps, SignupState> {
     const { email, password } = this.state;
     this.props
       .mutate({
-        variables: { email, password }
+        variables: { email, password },
       })
       .then((data: any) => {
         this.setState({ password: '' });
@@ -82,11 +82,11 @@ class SignUpDialog extends React.Component<SignupProps, SignupState> {
       })
       .catch((error: any) => {
         this.setState({
-          error: 'Login unsuccessfull! Please check email and password!'
+          error: 'Login unsuccessfull! Please check email and password!',
         });
       });
   }
-  
+
   private toggleDialog = () => this.setState({ isOpen: !this.state.isOpen });
 
   private handleChange(event: any, key: string) {
